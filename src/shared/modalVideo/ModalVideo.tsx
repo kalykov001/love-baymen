@@ -1,7 +1,13 @@
 "use client";
 import "./modalVideo.css";
 
-export default function ModalVideo({ visible, onClose, src }) {
+interface ModalProps {
+  visible: string;
+  onClose: () => void;
+  src: string;
+}
+
+export default function ModalVideo({ visible, onClose, src }: ModalProps) {
   if (!visible) return null; // если не видно, ничего не рендерим
 
   return (
