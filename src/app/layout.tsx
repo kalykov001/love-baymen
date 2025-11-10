@@ -26,7 +26,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={` ${marckScript.className} ${inter.className}`}>
         <HeartsRain />
-
         {children}
         <HeartEffect />
       </body>

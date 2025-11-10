@@ -1,17 +1,25 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, MouseEvent } from "react";
+
+interface Heart {
+  id: number;
+  x: number;
+  y: number;
+  size: number;
+}
 
 export default function HeartEffect() {
-  const [hearts, setHearts] = useState([]);
+  const [hearts, setHearts] = useState<Heart[]>([]);
 
-  const addHeart = (e) => {
-    const newHeart = {
+  const addHeart = (e: MouseEvent<Document>) => {
+    const newHeart: Heart = {
       id: Date.now(),
-      x: e.pageX, // координата X относительно документа
-      y: e.pageY, // координата Y относительно документа
+      x: e.pageX,
+      y: e.pageY,
       size: 16 + Math.random() * 32,
     };
+
     setHearts((prev) => [...prev, newHeart]);
 
     setTimeout(() => {
@@ -20,31 +28,30 @@ export default function HeartEffect() {
   };
 
   useEffect(() => {
-    document.addEventListener("click", addHeart);
-    return () => document.removeEventListener("click", addHeart);
+    document.addEventListener("click", addHeart as any);
+    return () => document.removeEventListener("click", addHeart as any);
   }, []);
 
   return (
     <>
       {hearts.map((heart) => (
-        <p
+        <span
           key={heart.id}
-          src="https://img1.picmix.com/output/stamp/normal/8/3/9/3/1803938_93bdb.gif"
-          alt=""
           style={{
             position: "absolute",
             left: heart.x - heart.size / 2 + "px",
             top: heart.y - heart.size / 2 + "px",
-            width: heart.size + "px",
-            height: heart.size + "px",
-            pointerEvents: "none", // чтобы клики проходили сквозь
+            fontSize: heart.size + "px",
+            pointerEvents: "none",
             userSelect: "none",
             zIndex: 9999,
             animation: "rise 1.5s ease-out forwards",
+            transformOrigin: "center",
+            display: "inline-block",
           }}
         >
           💖
-        </p>
+        </span>
       ))}
 
       <style jsx>{`
@@ -53,8 +60,12 @@ export default function HeartEffect() {
             transform: translateY(0) scale(1);
             opacity: 1;
           }
+          50% {
+            transform: translateY(-30px) scale(1.2);
+            opacity: 0.8;
+          }
           100% {
-            transform: translateY(-50px) scale(1.3);
+            transform: translateY(-60px) scale(1.5);
             opacity: 0;
           }
         }
