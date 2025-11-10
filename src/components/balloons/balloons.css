@@ -1,0 +1,199 @@
+.sky {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(to bottom, #cbe9ff, #fdfdfd);
+  overflow: hidden;
+}
+
+/* Шарики */
+.balloon {
+  position: absolute;
+  cursor: pointer;
+  animation: float 6s ease-in-out infinite;
+  transition: transform 0.3s ease;
+}
+
+.balloon:hover {
+  transform: scale(1.08) rotate(-2deg);
+}
+
+/* Форма */
+.shape {
+  width: 110px;
+  height: 130px;
+  border-radius: 50% 50% 48% 52%;
+  box-shadow: inset -5px -10px 15px rgba(0, 0, 0, 0.2),
+    0 6px 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  animation: shimmer 2s ease-in-out infinite alternate;
+}
+
+.inside-text {
+  font-family: "Marck Script", cursive;
+  font-size: 15px;
+  color: white;
+  text-align: center;
+  padding: 0 8px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Цвета */
+.balloon-0 .shape {
+  background: radial-gradient(circle at 30% 30%, #ff4b5c, #ff1e3c);
+}
+.balloon-1 .shape {
+  background: radial-gradient(circle at 30% 30%, #4b9eff, #1e6eff);
+}
+.balloon-2 .shape {
+  background: radial-gradient(circle at 30% 30%, #ff6bcd, #ff3fa0);
+}
+.balloon-3 .shape {
+  background: radial-gradient(circle at 30% 30%, #a8ff80, #4caf50);
+}
+.balloon-4 .shape {
+  background: radial-gradient(circle at 30% 30%, #ffd700, #ffb400);
+}
+
+/* Расположение */
+.balloon-0 { top: 15%; left: 10%; animation-delay: 0s; }
+.balloon-1 { top: 70%; left: 18%; animation-delay: 0.8s; }
+.balloon-2 { top: 45%; left: 45%; animation-delay: 1.3s; }
+.balloon-3 { top: 65%; left: 68%; animation-delay: 0.5s; }
+.balloon-4 { top: 18%; left: 75%; animation-delay: 1s; }
+
+/* Нитка */
+.string {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 2px;
+  height: 100px;
+  background: #444;
+  opacity: 0.7;
+  transform: translateX(-50%);
+  transition: all 0.5s ease;
+}
+
+/* Лопание */
+.popped .shape {
+  animation: pop 0.5s forwards;
+  background: inherit;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.4) rotate(15deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(0) rotate(30deg);
+    opacity: 0;
+  }
+}
+
+/* Контейнер после лопания — текст над шариком */
+.popped-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.popped-container .offer-text {
+  position: absolute;
+  top: -20px;
+  transform: translateX(-60%) scale(1); /* смещаем чуть влево */
+  font-family: "Marck Script", cursive;
+  font-size: 18px;
+  color: #ff3366;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 12px 20px;
+  text-align: center;
+  line-height: 1.4;
+  max-width: 200px;
+  word-wrap: break-word;
+  opacity: 0;
+  animation: showText 0.8s 0.4s forwards ease-out;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+@keyframes showText {
+  0% {
+    transform: scale(0.8) translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) translateY(-100px);
+    opacity: 1;
+  }
+}
+
+/* Плавное движение шариков */
+@keyframes float {
+  0% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  25% {
+    transform: translate(8px, -15px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-6px, -30px) rotate(-1deg);
+  }
+  75% {
+    transform: translate(10px, -15px) rotate(1deg);
+  }
+  100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+}
+
+/* Мерцание шариков */
+@keyframes shimmer {
+  0% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.2);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+
+/* Искры при лопании */
+.sparkles {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 120px;
+  height: 120px;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 0, 150, 0) 70%
+  );
+  border-radius: 50%;
+  animation: sparkle 0.6s forwards;
+  pointer-events: none;
+}
+
+@keyframes sparkle {
+  0% {
+    transform: scale(0) translateX(-50%);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5) translateX(-50%);
+    opacity: 0;
+  }
+}

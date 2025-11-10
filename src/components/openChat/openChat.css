@@ -1,0 +1,127 @@
+/* Основной контейнер */
+.mainbek {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 0;
+}
+
+/* Обёртка с перспективой для 3D эффекта */
+.mail-wrapper {
+  cursor: pointer;
+  perspective: 1000px;
+}
+
+/* Иконка почты */
+.mail-icon {
+  position: relative;
+  font-size: 3rem;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
+  border-radius: 50%;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+/* Hover эффект */
+.mail-icon:hover {
+  transform: scale(1.2) rotate(-3deg) translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(135deg, #ffdde1, #ee9ca7, #fbc2eb);
+}
+
+/* Бейджик "1" */
+.mail-icon .badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #ef4444;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 50%;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+  animation: pulse 2s infinite;
+}
+
+/* Пульсация бейджика */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+}
+
+/* Анимация "shake" */
+.shake {
+  animation: shakeAnim 0.8s cubic-bezier(.36,.07,.19,.97);
+}
+
+@keyframes shakeAnim {
+  0% { transform: rotate(0deg) translateY(0); }
+  10% { transform: rotate(-12deg) translateY(-2px); }
+  20% { transform: rotate(12deg) translateY(2px); }
+  30% { transform: rotate(-8deg) translateY(-2px); }
+  40% { transform: rotate(8deg) translateY(2px); }
+  50% { transform: rotate(-4deg) translateY(-1px); }
+  60% { transform: rotate(4deg) translateY(1px); }
+  70% { transform: rotate(-2deg) translateY(-1px); }
+  80% { transform: rotate(2deg) translateY(1px); }
+  100% { transform: rotate(0deg) translateY(0); }
+}
+
+/* Кнопка "Прочитать" */
+.read-btn {
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ec4899;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(236, 72, 153, 0.3);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Появление кнопки при hover */
+.mail-icon:hover .read-btn {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+/* Небольшое свечение вокруг иконки */
+.mail-icon::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(255, 192, 203, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mail-icon:hover::after {
+  opacity: 1;
+}
+.main {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Градиент с глубиной */
+  background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 50%, #fbc2eb 100%);
+  background-size: cover;
+
+  /* Добавляем мягкие световые блики */
+  position: relative;
+  overflow: hidden;
+}
