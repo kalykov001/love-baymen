@@ -6,7 +6,8 @@ export default function ChatAnswer({ visible, onClose }) {
   const [currentText, setCurrentText] = useState("");
   const [showTyping, setShowTyping] = useState(false);
 
-  const baynurMessage = " С тобой даже обычные дни становятся волшебными. Моё будущее теряет смысл без твоего взгляда, без твоей улыбки.";
+  const baynurMessage =
+    " С тобой даже обычные дни становятся волшебными. Моё будущее теряет смысл без твоего взгляда, без твоей улыбки.";
   const begimayMessage =
     "Я благодарна судьбе за тебя. Ничего не хочу больше, чем быть рядом с тобой и строить наш мир.";
 

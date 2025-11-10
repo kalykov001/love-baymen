@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-  ],
+, "src/shared/heartEffect/HeartEffect.jsx", "src/shared/chatAnswer/ChatAnswer.jsx", "src/shared/chat/Chat.jsx"  ],
   "exclude": ["node_modules"]
 }
