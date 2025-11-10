@@ -2,7 +2,7 @@
 import "./modalVideo.css";
 
 interface ModalProps {
-  visible: string;
+  visible: boolean;
   onClose: () => void;
   src: string;
 }
