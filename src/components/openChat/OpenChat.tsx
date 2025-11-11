@@ -1,33 +1,31 @@
 "use client";
-import { useEffect, useState } from "react";
-import "./openChat.css";
+import { useState } from "react";
 import Chat from "../../shared/chat/Chat";
+import "./openChat.css";
 
 export default function OpenChat() {
   const [chatVisible, setChatVisible] = useState(false);
-  const [shake, setShake] = useState(false);
+  const [tapEffect, setTapEffect] = useState(false);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setShake(true);
-      setTimeout(() => setShake(false), 800);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
+  const handleTap = () => {
+    setTapEffect(true);
+    setTimeout(() => setTapEffect(false), 400);
+    setChatVisible(true);
+  };
 
   return (
-    <div className="main">
-      <div className="mainbek">
-        <div className="mail-wrapper" onClick={() => setChatVisible(true)}>
-          <div className={`mail-icon ${shake ? "shake" : ""}`}>
-            💌
-            <span className="badge">1</span>
-            <div className="read-btn">Прочитать</div>
-          </div>
+    <div className="openchat-container">
+      <div className="instruction">Жми, чтобы прочитать 💌</div>
+      <div className="mail-wrapper" onClick={handleTap}>
+        <div className={`mail-icon ${tapEffect ? "tap" : ""}`}>
+          💌
+          <span className="badge">1</span>
         </div>
       </div>
 
-      <Chat visible={chatVisible} onClose={() => setChatVisible(false)} />
+      {chatVisible && (
+        <Chat visible={chatVisible} onClose={() => setChatVisible(false)} />
+      )}
     </div>
   );
 }

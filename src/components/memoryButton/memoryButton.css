@@ -3,64 +3,113 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: #f0fdf4;
+  background: radial-gradient(circle at center, #d1fae5 0%, #f0fdf4 100%);
+  overflow: hidden;
+  width: 100%;
+  z-index: 100;
 }
+
+/* Частицы */
+.particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+/* 💚 Кнопка */
 .memory-trigger {
   cursor: pointer;
-  font-size: 20px;
-  padding: 12px 24px;
-  background: linear-gradient(90deg, #ff9a9e, #fad0c4);
-  border-radius: 24px;
+  font-size: 22px;
+  padding: 16px 32px;
+  background: linear-gradient(90deg, #16a34a, #4ade80, #22c55e);
+  border-radius: 40px;
   color: white;
   font-weight: bold;
   text-align: center;
   user-select: none;
-  transition: transform 0.2s ease;
+  box-shadow: 0 0 30px rgba(34, 197, 94, 0.6);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
+
+/* Мерцание и пульс */
+.glow {
+  animation: pulse 2s infinite, shine 3s infinite;
+}
+
 .memory-trigger:hover {
-  transform: scale(1.1);
+  transform: scale(1.15);
+  box-shadow: 0 0 50px rgba(34, 197, 94, 0.9);
 }
 
-/* Кнопка зелёная */
-.btn {
-  padding: 0.75rem 1.5rem;
-  background-color: #22c55e;
-  color: white;
-  border-radius: 1rem;
-  font-weight: 600;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  transition: background-color 0.3s;
+/* Вспышка при наведении */
+.memory-trigger::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.4),
+    rgba(255, 255, 255, 0)
+  );
+  transform: skewX(-25deg);
 }
 
-.button-green:hover {
-  background-color: #16a34a;
+.memory-trigger:hover::before {
+  left: 125%;
+  transition: left 0.8s ease;
 }
 
-/* Модалка */
+/* Эффект "взрывного" появления */
+.explode {
+  animation: explodeIn 0.6s ease forwards;
+}
+
+/* 🌸 Модалка */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(6px); /* Мутный фон */
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(12px);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  animation: fadeIn 0.5s ease forwards;
 }
 
 .modal-content {
   background: white;
   padding: 2rem;
-  border-radius: 1rem;
-  width: 400px;
+  border-radius: 2rem;
+  width: 520px;
   max-width: 90%;
   text-align: center;
   position: relative;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  animation: zoomIn 0.5s ease forwards;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
+}
+
+iframe {
+  border-radius: 1rem;
+  box-shadow: 0 0 30px rgba(34, 197, 94, 0.5);
+  animation: softPulse 3s ease-in-out infinite;
 }
 
 .close-btn {
@@ -69,6 +118,46 @@
   right: 15px;
   background: transparent;
   border: none;
-  font-size: 1.5rem;
+  font-size: 2rem;
+  color: #16a34a;
   cursor: pointer;
+  transition: transform 0.3s;
 }
+
+.close-btn:hover {
+  transform: rotate(180deg) scale(1.3);
+}
+
+/* ✨ Анимации */
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(34,197,94,0.4);}
+  50% { box-shadow: 0 0 50px rgba(34,197,94,0.9);}
+}
+
+@keyframes shine {
+  0%,100%{ transform: scale(1);}
+  50%{ transform: scale(1.03);}
+}
+
+@keyframes explodeIn {
+  0% { transform: scale(0); opacity: 0;}
+  60% { transform: scale(1.2); opacity: 1;}
+  100% { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes softPulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(34,197,94,0.5);}
+  50% { transform: scale(1.02); box-shadow: 0 0 50px rgba(34,197,94,0.8);}
+}
+
+.fade-in { animation: fadeIn 0.6s ease forwards; }

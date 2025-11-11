@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter, Marck_Script } from "next/font/google";
 import "./globals.css";
-import HeartEffect from "@/shared/heartEffect/HeartEffect";
 import HeartsRain from "@/shared/heartRain/HeartRain";
+import HeartEffect from "@/shared/heartEffect/HeartEffect";
 
 const inter = Inter({
   subsets: ["latin", "cyrillic"],

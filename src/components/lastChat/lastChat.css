@@ -1,0 +1,55 @@
+.lastchat-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: radial-gradient(circle at center, #fff0f5, #ffe4e1);
+  width: 100%;
+}
+
+/* Кнопка с вау эффектом */
+.magical-btn {
+  padding: 16px 36px;
+  font-size: 20px;
+  font-weight: 700;
+  border: none;
+  border-radius: 40px;
+  background: linear-gradient(270deg, #ff6ec4, #7873f5, #4ade80);
+  background-size: 600% 600%;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 0 30px rgba(255, 110, 196, 0.7), 0 0 50px rgba(120, 115, 245, 0.5);
+  transition: transform 0.2s, box-shadow 0.3s;
+  animation: gradientShift 8s ease infinite, pulseBtn 2s infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+/* При тапе (мобильный эффект) */
+.magical-btn:active {
+  transform: scale(1.2) rotate(-3deg);
+  box-shadow: 0 0 60px rgba(255, 110, 196, 1), 0 0 70px rgba(120, 115, 245, 0.7);
+}
+
+/* Перелив градиента */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Пульсация свечения */
+@keyframes pulseBtn {
+  0%, 100% { box-shadow: 0 0 30px rgba(255,110,196,0.7), 0 0 50px rgba(120,115,245,0.5); }
+  50% { box-shadow: 0 0 50px rgba(255,110,196,1), 0 0 70px rgba(120,115,245,0.7); }
+}
+
+/* Анимация модалки */
+.fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

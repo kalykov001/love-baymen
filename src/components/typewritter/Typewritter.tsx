@@ -5,24 +5,25 @@ import "./typewritter.css";
 
 export default function TypingFeather() {
   const fullText =
-    "hТы - как утро после дождя, нежная и светлая. Каждое мгновение рядом с тобой наполняет сердце теплом, а твоя улыбка — моим светом. Люблю тебя больше, чем слова могут передать, и каждый день благодарю судьбу за тебя.";
+    " Ты - как утро после дождя,нежная и светлая. Каждое мгновение рядом с тобой наполняет сердце теплом, а твоя улыбка — моим светом. Люблю тебя больше, чем слова могут передать, и каждый день благодарю судьбу за тебя.";
   const [displayedText, setDisplayedText] = useState<string[]>([]);
   const cursorRef = useRef<HTMLSpanElement>(null);
   const [coords, setCoords] = useState({ x: 0, y: 0 });
 
   // Добавляем буквы
-  useEffect(() => {
-    let i = 0;
-    const interval = setInterval(() => {
-      if (i < fullText.length) {
-        setDisplayedText((prev) => [...prev, fullText[i]]);
-        i++;
-      } else {
-        clearInterval(interval);
-      }
-    }, 150);
-    return () => clearInterval(interval);
-  }, []);
+useEffect(() => {
+  if (displayedText.length > 0) return; // предотвращает повтор
+  let i = 0;
+  const interval = setInterval(() => {
+    if (i < fullText.length) {
+      setDisplayedText((prev) => [...prev, fullText[i]]);
+      i++;
+    } else {
+      clearInterval(interval);
+    }
+  }, 100);
+  return () => clearInterval(interval);
+}, []);
 
   // Обновляем координаты пера после каждого рендера
   useLayoutEffect(() => {

@@ -11,7 +11,7 @@
 
   .img2 {
     width: 100%;
-    min-height: 750px;
+    min-height: 600px;
     position: relative;
   }
   .img1,
@@ -21,3 +21,27 @@
     position: relative;
   }
 }
+.hint {
+  position: absolute;
+  bottom: 50px; /* чуть выше нижнего края */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.4rem;
+  color: white;
+  font-weight: 600;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+  animation: bounce 1.5s infinite, pulse 2s infinite;
+  pointer-events: none; /* чтобы клик проходил сквозь текст */
+  text-align: center;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-10px); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+

@@ -1,18 +1,24 @@
 "use client";
 import { useState } from "react";
 import ChatAnswer from "../../shared/chatAnswer/ChatAnswer";
+import "./lastChat.css";
 
 export default function LastChat() {
   const [chatVisible, setChatVisible] = useState(false);
 
   return (
-    <div>
+    <div className="lastchat-page">
       <div className="mainbek">
-        <button className="btn" onClick={() => setChatVisible(true)}>
-          Нажми, чтобы ответить 💌
+        <button className="btn magical-btn" onClick={() => setChatVisible(true)}>
+          💌 Нажми, чтобы ответить
         </button>
       </div>
-      <ChatAnswer visible={chatVisible} onClose={() => setChatVisible(false)} />
+
+      {chatVisible && (
+        <div className="fade-in">
+          <ChatAnswer visible={chatVisible} onClose={() => setChatVisible(false)} />
+        </div>
+      )}
     </div>
   );
 }
