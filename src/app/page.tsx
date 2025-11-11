@@ -59,48 +59,6 @@ export default function Home() {
   }, []);
 
   return (
-    // <div className={styles.page}>
-    //   <audio ref={audioRef} loop>
-    //     <source src="/song2.mp3" type="audio/mpeg" />
-    //     Ваш браузер не поддерживает аудио.
-    //   </audio>
-
-    //   {/* Первая картинка */}
-    //   <div onClick={smoothScrollDown} className={styles.img1}>
-    //     <Image priority src="/homePhoto.png" fill alt="winter" />
-    //   </div>
-
-    //   {/* Слайдер всегда виден */}
-
-    //   {/* Остальные блоки только если showRest === true */}
-    //   {showRest && (
-    //     <>
-    //       <TypewriterText />
-    //       <div className={styles.img3}>
-    //         <Image fill src="/onePhoto.png" alt="love" style={{objectFit: "cover"}} />
-    //       </div>
-    //       <Slider />
-    //       <div className={styles.img}>
-    //         <Image fill src="/photo4.png" alt="love"  style={{objectFit: "cover"}}/>
-    //       </div>
-    //       <OpenChat />
-    //       <div className={styles.img2}>
-    //         <Image fill src="/together.png" alt="love"  />
-    //       </div>
-    //       <Balloons />
-    //       {showMemory && (
-    //         <MemoryButton onClose={() => setShowMemory(false)} /> // ✅ передаем функцию
-    //       )}
-    //       <div className={styles.img}>
-    //         <Image fill src="/selfi.png" alt="love"  />
-    //       </div>
-    //       <LastChat />
-    //       <div className={styles.img2}>
-    //         <Image fill src="/twoPhoto.png" alt="love"  style={{objectFit: "cover"}}/>
-    //       </div>
-    //     </>
-    //   )}
-    // </div>
     <div className={styles.page}>
   <audio ref={audioRef} loop>
     <source src="/song2.mp3" type="audio/mpeg" />
