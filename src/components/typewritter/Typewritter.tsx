@@ -5,7 +5,7 @@ import "./typewritter.css";
 
 export default function TypingFeather() {
   const fullText =
-    " Ты - как утро после дождя,нежная и светлая. Каждое мгновение рядом с тобой наполняет сердце теплом, а твоя улыбка — моим светом. Люблю тебя больше, чем слова могут передать, и каждый день благодарю судьбу за тебя.";
+    "Ты - как утро после дождя,нежная и светлая. Каждое мгновение рядом с тобой наполняет сердце теплом, а твоя улыбка — моим светом. Люблю тебя больше, чем слова могут передать, и каждый день благодарю судьбу за тебя.";
   const [displayedText, setDisplayedText] = useState<string[]>([]);
   const cursorRef = useRef<HTMLSpanElement>(null);
   const [coords, setCoords] = useState({ x: 0, y: 0 });
