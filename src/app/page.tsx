@@ -67,7 +67,7 @@ export default function Home() {
 
       {/* Первая картинка */}
       <div onClick={smoothScrollDown} className={styles.img1}>
-        <Image priority src="/1.png" fill alt="winter" />
+        <Image priority src="/homePhoto.png" fill alt="winter" />
       </div>
 
       {/* Слайдер всегда виден */}
